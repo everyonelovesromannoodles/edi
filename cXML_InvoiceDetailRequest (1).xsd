@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="cXML_InvoiceDetailRequest">
+    <xs:annotation>
+      <xs:documentation>cXML InvoiceDetailRequest
+</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" name="Header">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="0" name="From">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="1" minOccurs="0" name="Credential">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="1" minOccurs="0" name="Identity" type="xs:string"/>
+                        </xs:sequence>
+                        <xs:attribute name="domain" type="xs:string" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="To">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="1" minOccurs="0" name="Credential">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="1" minOccurs="0" name="Identity" type="xs:string"/>
+                        </xs:sequence>
+                        <xs:attribute name="domain" type="xs:string" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element maxOccurs="1" minOccurs="0" name="Sender">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="1" minOccurs="0" name="Credential">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="1" minOccurs="0" name="Identity" type="xs:string"/>
+                          <xs:element maxOccurs="1" minOccurs="0" name="SharedSecret" type="xs:string"/>
+                        </xs:sequence>
+                        <xs:attribute name="domain" type="xs:string" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element maxOccurs="1" minOccurs="0" name="UserAgent" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="1" minOccurs="0" name="Request">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="1" minOccurs="0" name="InvoiceDetailRequest">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="1" minOccurs="0" name="InvoiceDetailRequestHeader">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="1" minOccurs="0" name="InvoiceDetailHeaderIndicator" type="xs:string"/>
+                          <xs:element maxOccurs="1" minOccurs="0" name="InvoiceDetailLineIndicator">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="isAccountingInLine" type="xs:string" use="optional"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element maxOccurs="unbounded" minOccurs="0" name="InvoicePartner">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="1" minOccurs="0" name="Contact">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="1" minOccurs="0" name="Name">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute name="lang" type="xs:string" use="optional"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element maxOccurs="1" minOccurs="0" name="PostalAddress">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element maxOccurs="unbounded" minOccurs="0" name="Street" type="xs:string"/>
+                                            <xs:element maxOccurs="1" minOccurs="0" name="City" type="xs:string"/>
+                                            <xs:element maxOccurs="1" minOccurs="0" name="State" type="xs:string"/>
+                                            <xs:element maxOccurs="1" minOccurs="0" name="PostalCode" type="xs:string"/>
+                                            <xs:element maxOccurs="1" minOccurs="0" name="Country">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute name="isoCountryCode" type="xs:string" use="optional"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="addressID" type="xs:string" use="optional"/>
+                                    <xs:attribute name="role" type="xs:string" use="optional"/>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element maxOccurs="1" minOccurs="0" name="IdReference">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="1" minOccurs="0" name="Description">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute name="lang" type="xs:string" use="optional"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="domain" type="xs:string" use="optional"/>
+                                    <xs:attribute name="identifier" type="xs:string" use="optional"/>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element maxOccurs="1" minOccurs="0" name="InvoiceDetailShipping">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="unbounded" minOccurs="0" name="Contact">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="1" minOccurs="0" name="Name">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute name="lang" type="xs:string" use="optional"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element maxOccurs="1" minOccurs="0" name="PostalAddress">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element maxOccurs="1" minOccurs="0" name="Street" type="xs:string"/>
+                                            <xs:element maxOccurs="1" minOccurs="0" name="City" type="xs:string"/>
+                                            <xs:element maxOccurs="1" minOccurs="0" name="State" type="xs:string"/>
+                                            <xs:element maxOccurs="1" minOccurs="0" name="PostalCode" type="xs:string"/>
+                                            <xs:element maxOccurs="1" minOccurs="0" name="Country">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute name="isoCountryCode" type="xs:string" use="optional"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="addressID" type="xs:string" use="optional"/>
+                                    <xs:attribute name="role" type="xs:string" use="optional"/>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element maxOccurs="1" minOccurs="0" name="PaymentTerm">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="payInNumberOfDays" use="optional">
+                                    <xs:simpleType>
+                                      <xs:restriction base="xs:integer">
+                                        <xs:fractionDigits value="0"/>
+                                      </xs:restriction>
+                                    </xs:simpleType>
+                                  </xs:attribute>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="invoiceDate" type="xs:dateTime" use="optional"/>
+                        <xs:attribute name="invoiceID" type="xs:string" use="required">
+                          <xs:annotation>
+                            <xs:documentation>Invoice Number</xs:documentation>
+                          </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="invoiceOrigin" type="xs:string" use="optional"/>
+                        <xs:attribute name="operation" type="xs:string" use="optional"/>
+                        <xs:attribute name="purpose" type="xs:string" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element maxOccurs="1" minOccurs="0" name="InvoiceDetailOrder">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="1" minOccurs="0" name="InvoiceDetailOrderInfo">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="1" minOccurs="0" name="OrderReference">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="1" minOccurs="0" name="DocumentReference">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute name="payloadID" type="xs:string" use="optional">
+                                                <xs:annotation>
+                                                  <xs:documentation>PO Number</xs:documentation>
+                                                </xs:annotation>
+                                              </xs:attribute>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="orderID" type="xs:string" use="optional">
+                                      <xs:annotation>
+                                        <xs:documentation>PO Number</xs:documentation>
+                                      </xs:annotation>
+                                    </xs:attribute>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element maxOccurs="unbounded" minOccurs="0" name="InvoiceDetailItem">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="1" minOccurs="0" name="UnitOfMeasure" type="xs:string"/>
+                                <xs:element maxOccurs="1" minOccurs="0" name="UnitPrice">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="1" minOccurs="0" name="Money">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:decimal">
+                                              <xs:attribute name="currency" type="xs:string" use="optional"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element maxOccurs="1" minOccurs="0" name="InvoiceDetailItemReference">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="1" minOccurs="0" name="ItemID">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element maxOccurs="1" minOccurs="0" name="SupplierPartID" type="xs:string">
+                                              <xs:annotation>
+                                                <xs:documentation>sxe_prod</xs:documentation>
+                                              </xs:annotation>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element maxOccurs="1" minOccurs="0" name="Description">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute name="lang" type="xs:string" use="optional"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="lineNumber" use="optional">
+                                      <xs:simpleType>
+                                        <xs:restriction base="xs:integer">
+                                          <xs:fractionDigits value="0"/>
+                                        </xs:restriction>
+                                      </xs:simpleType>
+                                    </xs:attribute>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element maxOccurs="1" minOccurs="0" name="SubtotalAmount">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="1" minOccurs="0" name="Money">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:decimal">
+                                              <xs:attribute name="currency" type="xs:string" use="optional"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="invoiceLineNumber" use="optional">
+                                <xs:simpleType>
+                                  <xs:restriction base="xs:integer">
+                                    <xs:fractionDigits value="0"/>
+                                  </xs:restriction>
+                                </xs:simpleType>
+                              </xs:attribute>
+                              <xs:attribute name="quantity" use="optional">
+                                <xs:simpleType>
+                                  <xs:restriction base="xs:integer">
+                                    <xs:fractionDigits value="0"/>
+                                  </xs:restriction>
+                                </xs:simpleType>
+                              </xs:attribute>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element maxOccurs="1" minOccurs="0" name="InvoiceDetailSummary">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="1" minOccurs="0" name="SubtotalAmount">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="1" minOccurs="0" name="Money">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:decimal">
+                                        <xs:attribute name="currency" type="xs:string" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element maxOccurs="1" minOccurs="0" name="Tax">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="1" minOccurs="0" name="Money">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:decimal">
+                                        <xs:attribute name="currency" type="xs:string" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element maxOccurs="1" minOccurs="0" name="Description">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute name="lang" type="xs:string" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element maxOccurs="1" minOccurs="0" name="GrossAmount">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="1" minOccurs="0" name="Money">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:decimal">
+                                        <xs:attribute name="currency" type="xs:string" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element maxOccurs="1" minOccurs="0" name="InvoiceDetailDiscount">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="1" minOccurs="0" name="Money">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:decimal">
+                                        <xs:attribute name="currency" type="xs:string" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element maxOccurs="1" minOccurs="0" name="NetAmount">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="1" minOccurs="0" name="Money">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:decimal">
+                                        <xs:attribute name="currency" type="xs:string" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element maxOccurs="1" minOccurs="0" name="DueAmount">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="1" minOccurs="0" name="Money">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:decimal">
+                                        <xs:attribute name="currency" type="xs:string" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="deploymentMode" type="xs:string" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="lang" type="xs:string" use="optional"/>
+      <xs:attribute name="payloadID" type="xs:string" use="optional"/>
+      <xs:attribute name="timestamp" type="xs:dateTime" use="optional"/>
+      <xs:attribute name="version" type="xs:string" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
